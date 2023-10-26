@@ -54,8 +54,8 @@ const GroupToken = ({name,color})=>{
             fontWeight:"500"
         }}>
             <div style={{
-                height:'70px',
-                width:'70px',
+                height:'60px',
+                width:'60px',
                 backgroundColor:`${color}`,
                 display:'flex',
                 alignItems:'center',
