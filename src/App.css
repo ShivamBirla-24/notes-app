@@ -11,30 +11,8 @@
 .left-container-app{
     width: 25vw;
 }
+
 .right-container-app{
     background-color: #F7ECDC;
     width: 75vw;
 }
-
-/*PopUp*/
-
-.popup-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(98,98,98,0.5);
-    filter: blur(1px);
-    z-index: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.popup{
-    width: 20%;
-    height: 10%;
-
-}
-

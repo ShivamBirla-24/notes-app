@@ -7,14 +7,14 @@
 }
 
 .group-container{
-    height: 100vh;
     width: 100%;
+    height: 100vh;
 }
 
 .group-container-heading h1{
     font-family: 'Roboto',sans-serif;
     font-weight: 500;
-    font-size: 30px;
+    font-size: 25px;
     padding: 7% 6%;
 }
 

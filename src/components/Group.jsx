@@ -1,24 +1,25 @@
 import React, { useState,useEffect } from 'react'
 import './../style/Group.css'
-function Group({setpopUp,Count}) {
-  let [allGroups,setallGroups] = useState([]);
-  
+function Group({setpopUp,Count,groupClick,setgroupClick,allGroups,setallGroups,setisClicked,setgroupColor}) {
 
+  
   const setData = ()=>{
-       setallGroups(JSON.parse(localStorage.getItem('allGroups')))
+       setallGroups(JSON.parse(localStorage.getItem('allGroups')));
   }
 
   useEffect(() => {
       setData();
   }, [Count]); 
-
-
+                         
   const handlePopup = ()=>{
-       setpopUp(true);
+      setpopUp(true);
   }
   
-  
-  
+  const handlegroupClick = (e)=>{
+       setgroupClick(e.target.id);
+       setisClicked(true);
+       setgroupColor(e.target.getAttribute("color"));
+  }
 
   return (
     <div className='group-container'>
@@ -32,7 +33,7 @@ function Group({setpopUp,Count}) {
              {
                 (allGroups && allGroups.length > 0 ) ? (
                     allGroups.map((item)=>(
-                        <GroupToken name={item.groupname} color={item.color}/>
+                        <GroupToken name={item.groupname} color={item.color} handlegroupClick={handlegroupClick} groupClick={groupClick}/>
                     ))
                 ) : ""
              }
@@ -41,19 +42,25 @@ function Group({setpopUp,Count}) {
   )
 }
 
-const GroupToken = ({name,color})=>{
+const GroupToken = ({name,color,handlegroupClick,groupClick})=>{
     return (
-        <div style={{
-            margin:"30px 0 30px 30px",
+        <div id={name} color={color} style={{
+            margin:"10px 0 10px 17px",
             display:'flex',
             alignItems:"center",
             justifyContent:"flex-start",
             gap:"22px",
             fontFamily:'Roboto',
             letterSpacing:"1px",
-            fontWeight:"500"
-        }}>
-            <div style={{
+            fontWeight:"500",
+            padding: "12px 0 12px 13px",
+            borderRadius:"20px 0 0 20px",
+            cursor:"pointer",
+            backgroundColor: (groupClick===name) ? "#F7ECDC" : ""
+        }} onClick={handlegroupClick}>
+            <div id={name}
+                color={color}
+                style={{
                 height:'60px',
                 width:'60px',
                 backgroundColor:`${color}`,
@@ -65,13 +72,13 @@ const GroupToken = ({name,color})=>{
                 color:"white"
             }}>
                {
-                 name[0]+name[2]
+                 (name.split(" ").join(""))[0] + (name.split(" ").join(""))[(name.length)-3]
                }
             </div>
-            <div style={{
+            <div id={name} color={color} style={{
                 width:"200px"
             }}>
-            <p style={{
+            <p id={name} color={color} style={{
                 fontSize:"22px",
             }}>
                {name}
