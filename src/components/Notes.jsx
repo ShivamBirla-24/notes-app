@@ -5,6 +5,7 @@ function Notes({groupClick,groupColor}) {
   let [text,setText]= useState("");
   let [data,setData]=useState('');
   let [groupMsg , setgroupMsg] = useState([]);
+  let [Count , setCount] = useState(0);
   let time = new Date();
 
    const currentTime = ()=>{
@@ -52,6 +53,7 @@ function Notes({groupClick,groupColor}) {
             "date": DateNow(),
             "note": text
           })
+        setText('');
       }
   }
 
@@ -65,8 +67,13 @@ function Notes({groupClick,groupColor}) {
     ,[data])
 
   useEffect(()=>{
-        getData();
-  },[])
+    const groupData = localStorage.getItem(groupClick);
+    if(groupData){
+        setgroupMsg(
+            JSON.parse(groupData)
+        )
+    }  
+  },[groupClick])
 
  
   return (
