@@ -94,7 +94,7 @@ function Notes({groupClick,groupColor,setisClicked,setgroupClick}) {
          <div className='text-area'>
              {
                 groupMsg.map((item,index)=>(
-                    <></>
+                        <Textmsg key={index} msgtime={item.time} msgday={item.date} msgcontent={item.note} />
                 ))
              }
          </div>
@@ -125,6 +125,20 @@ const GroupTag = ({name,color})=>{
           </div>
       </div>
   )
+}
+
+const Textmsg = ({msgtime,msgday,msgcontent})=>{
+     return(
+       <div className='textmsg-main-div'>
+            <div className='date-and-day'>
+                 <p>{msgtime}</p>
+                 <p>{msgday}</p>
+            </div>
+            <div className='textmsg-content'>
+                 <span>{msgcontent}</span>
+            </div>
+       </div>
+     )
 }
 
 export default Notes

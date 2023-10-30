@@ -36,7 +36,7 @@
     padding: 5%;
     display: flex;
     flex-direction: column;
-    gap: 15%;
+    gap: 10%;
     overflow: auto;
     background-color: #F7ECDC;
 }
@@ -134,14 +134,58 @@
     font-size: 21px;
 }
 
-@media screen and (min-width: 370px) and (max-width: 450px){
+.textmsg-main-div{
+    display: flex;
+    gap: 3%;
+}
 
+.date-and-day{
+   display: flex;
+   flex-direction: column;
+   width: 12%;
+   justify-content: flex-start;
+   align-items: flex-start ;
+   font-size: 14.5px;
+   font-weight: 500;
+   gap: 5px;
+}
+
+.textmsg-content{
+   font-size: 14.5px;
+   width: 85%;
+   display: flex;
+   justify-content: flex-start;
+}
+
+@media screen and (min-width: 370px) and (max-width: 450px){
+    .date-and-day{
+        display: flex;
+        flex-direction: column;
+        width: 30%;
+        justify-content: flex-start;
+        align-items: flex-start ;
+        font-size: 13.5px;
+        font-weight: 500;
+        gap: 4px;
+     }
+     
+     .textmsg-content{
+        font-size: 13.5px;
+        width: 60%;
+        display: flex;
+        justify-content: flex-start;
+     }
+
+    .textmsg-main-div{
+        display: flex;
+        gap: 5%;
+    }
     .notes-group-tag-main-div{
-        margin:10px 0 10px 13px;
+        margin:10px 0 10px 5px;
         display:flex;
         align-items: center;
         justify-content: flex-start;
-        gap:17px;
+        gap:14px;
         font-family: 'Roboto',sans-serif;
         letter-spacing:1px;
         font-weight:500;
@@ -152,8 +196,8 @@
     }
 
     .notes-group-tag-circle{
-        height:60px;
-        width:60px;
+        height:55px;
+        width:55px;
         display:flex;
         align-items: center;
         justify-content: center;
@@ -170,12 +214,35 @@
 }
 
 @media screen and (min-width: 280px) and (max-width: 370px){
+    .date-and-day{
+        display: flex;
+        flex-direction: column;
+        width: 30%;
+        justify-content: flex-start;
+        align-items: flex-start ;
+        font-size: 12.5px;
+        font-weight: 500;
+        gap: 3px;
+     }
+     
+     .textmsg-content{
+        font-size: 12.5px;
+        width: 65%;
+        display: flex;
+        justify-content: flex-start;
+     }
+
+    .textmsg-main-div{
+        display: flex;
+        gap: 6%;
+    }
+    
     .notes-group-tag-main-div{
-        margin:10px 0 10px 13px;
+        margin:10px 0 10px 5px;
         display:flex;
         align-items: center;
         justify-content: flex-start;
-        gap:17px;
+        gap:12px;
         font-family: 'Roboto',sans-serif;
         letter-spacing:1px;
         font-weight:500;
