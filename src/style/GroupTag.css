@@ -1,0 +1,116 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.group-tag-main-div{
+    margin:10px 0 10px 17px;
+    display:flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap:18px;
+    font-family: 'Roboto',sans-serif;
+    letter-spacing:1px;
+    font-weight:500;
+    padding: 10px 0 12px 10px;
+    border-radius:20px 0 0 20px;
+    cursor: pointer;
+    height: 11vh;
+}
+
+.group-tag-circle{
+    height:60px;
+    width:60px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 23px;
+    color:white;
+}
+
+.group-tag-name{
+    width: 200px;
+    font-size: 21px;
+}
+
+.onclick-group{
+    background-color: #F7ECDC;
+}
+
+@media screen and (min-width: 370px) and (max-width: 450px){
+    .onclick-group{
+        background-color: white;
+    }
+
+    .group-tag-main-div{
+        margin:10px 0 10px 13px;
+        display:flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap:17px;
+        font-family: 'Roboto',sans-serif;
+        letter-spacing:1px;
+        font-weight:500;
+        padding: 10px 0 12px 10px;
+        border-radius:20px 0 0 20px;
+        cursor: pointer;
+        width: 280px;
+    }
+
+    .group-tag-circle{
+        height:60px;
+        width:60px;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        font-size: 22px;
+        color:white;
+    }
+
+    .group-tag-name{
+        width: 200px;
+        font-size: 20px;
+    }
+    
+}
+
+@media screen and (min-width: 280px) and (max-width: 370px){
+    .onclick-group{
+        background-color: white;
+    }
+
+    .group-tag-main-div{
+        margin:10px 0 10px 13px;
+        display:flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap:17px;
+        font-family: 'Roboto',sans-serif;
+        letter-spacing:1px;
+        font-weight:500;
+        padding: 10px 0 12px 10px;
+        border-radius:20px 0 0 20px;
+        cursor: pointer;
+        width: 280px;
+    }
+
+    .group-tag-circle{
+        height:50px;
+        width:50px;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        font-size: 21px;
+        color:white;
+    }
+
+    .group-tag-name{
+        width: 150px;
+        font-size: 20px;
+    }
+    
+}

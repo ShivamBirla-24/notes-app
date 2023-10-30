@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import submitImage from './../images/enter.png'
+import backbuttonImage from './../images/backbutton.svg'
 import './../style/Notes.css'
-function Notes({groupClick,groupColor}) {
+function Notes({groupClick,groupColor,setisClicked,setgroupClick}) {
   let [text,setText]= useState("");
-  let [data,setData]=useState('');
+  let [data,setData]=useState("");
   let [groupMsg , setgroupMsg] = useState([]);
-  let [Count , setCount] = useState(0);
   let time = new Date();
 
    const currentTime = ()=>{
      var hours = time.getHours();
      var minutes = time.getMinutes();
-     
      var strMinutes = minutes.toString();
 
      if(strMinutes.length===1){
@@ -33,21 +32,14 @@ function Notes({groupClick,groupColor}) {
      return `${day} ${months[month]} ${year}`;
   }
   
-  const getData = ()=>{
-    const dataDefault = localStorage.getItem(groupClick);
-    if(dataDefault){
-        setgroupMsg(JSON.parse(dataDefault))
-    }
-  }
-
   const handleChange = (e)=>{
-      setText(
-         e.target.value
-      );
+        setText(
+          e.target.value
+       );
     }
 
   const handleClick = ()=>{
-      if(text.length){
+      if(text.length && text !== "\n" && text !== "\n\n"){
         setData({
             "time": currentTime(),
             "date": DateNow(),
@@ -57,6 +49,24 @@ function Notes({groupClick,groupColor}) {
       }
   }
 
+  const pressEnter = (e)=>{
+    if(e.key==='Enter'){
+        if(text.length){
+            setData({
+                "time": currentTime(),
+                "date": DateNow(),
+                "note": text
+              })
+            setText('');
+          }
+    }
+  }
+
+  const backtoHome = ()=>{
+      setisClicked(false);
+      setgroupClick("");
+  }
+
   useEffect(()=>{
           if(data.length !==0){
           let myArray = JSON.parse(localStorage.getItem(groupClick)) || [] ;
@@ -64,29 +74,33 @@ function Notes({groupClick,groupColor}) {
           localStorage.setItem(groupClick,JSON.stringify(myArray));
           }
         }
-    ,[data])
+    ,[data])  
+
 
   useEffect(()=>{
-    const groupData = localStorage.getItem(groupClick);
-    if(groupData){
-        setgroupMsg(
-            JSON.parse(groupData)
-        )
-    }  
-  },[groupClick])
+    let groupData = localStorage.getItem(groupClick) ? JSON.parse(localStorage.getItem(groupClick)) : [];
+    setgroupMsg(
+        groupData
+    )
+  },[groupClick,data])
 
  
   return (
     <div className='notes-container'>
          <div className='notes-container-heading'>
-             <GroupToken groupClick={groupClick} groupColor={groupColor}/>
+             <img src={backbuttonImage} alt='backbutton' className='mobile-only' onClick={backtoHome}></img>
+             <GroupTag name={groupClick} color={groupColor} />
          </div>
          <div className='text-area'>
-             
+             {
+                groupMsg.map((item,index)=>(
+                    <></>
+                ))
+             }
          </div>
          <div className='typing-area'>
               <div className='input-box-div'>
-                  <textarea type='text' placeholder='Enter your text here...........' value={text} onChange={handleChange}></textarea>
+                  <textarea type='text' placeholder='Enter your text here...........' value={text} onChange={handleChange} onKeyDown={pressEnter}></textarea>
                   <img src={submitImage} alt="enter" onClick={handleClick}/>
               </div>
          </div>
@@ -94,47 +108,23 @@ function Notes({groupClick,groupColor}) {
   )
 }
 
-const GroupToken = ({groupClick,groupColor})=>{
-    return (
-        <div id={groupClick} style={{
-            margin:"0 0 0 17px",
-            display:'flex',
-            alignItems:"center",
-            justifyContent:"flex-start",
-            gap:"22px",
-            fontFamily:'Roboto',
-            letterSpacing:"1px",
-            fontWeight:"500",
-            padding: "12px 0 12px 13px",
-            borderRadius:"20px 0 0 20px",
-        }}>
-            <div
-                style={{
-                height:'60px',
-                width:'60px',
-                backgroundColor:`${groupColor}`,
-                display:'flex',
-                alignItems:'center',
-                justifyContent:'center',
-                borderRadius:"50%",
-                fontSize:"24px",
-                color:"white"
-            }}>
-               {
-                 (groupClick.split(" ").join(""))[0] + (groupClick.split(" ").join(""))[(groupClick.length)-3]
-               }
-            </div>
-            <div style={{
-                width:"200px"
-            }}>
-            <p style={{
-                fontSize:"22px",
-            }}>
-               {groupClick}
-            </p>
-            </div>
-        </div>
-    )
+const GroupTag = ({name,color})=>{
+  return (
+      <div id={name} color={color} className= "notes-group-tag-main-div">
+          <div id={name}
+              color={color}
+              style={{
+                  backgroundColor:`${color}`
+          }} className='notes-group-tag-circle'>
+             {
+               name[0] + name[name.length-1]
+             }
+          </div>
+          <div id={name} color={color} className='notes-group-tag-name'>
+             {name}
+          </div>
+      </div>
+  )
 }
 
 export default Notes

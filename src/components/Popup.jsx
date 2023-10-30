@@ -56,8 +56,8 @@ function Popup({setpopUp,Count , setCount}) {
                         <h3>Choose colour</h3>
                         <div>
                         {
-                            color.map((item)=>(
-                                <Colorbutton id={item} handleClick={handleClick}/>
+                            color.map((item,index)=>(
+                                <Colorbutton key={index} id={item} handleClick={handleClick}/>
                             ))
                         }
                         </div>
@@ -81,8 +81,8 @@ function Popup({setpopUp,Count , setCount}) {
 const Colorbutton = ({id,handleClick})=>{
       return ( 
       <button style={{
-        height:"20px",
-        width:"20px",
+        height:"15px",
+        width:"15px",
         borderRadius:"50%",
         backgroundColor:`${id}`,
         cursor:"pointer",

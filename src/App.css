@@ -16,3 +16,21 @@
     background-color: #F7ECDC;
     width: 75vw;
 }
+
+.desktop-only{
+    display: flex;
+}
+
+.mobile-only{
+    display: none;
+}
+
+@media screen and (min-width: 250px) and (max-width: 450px) {
+    .mobile-only{
+        display: block;
+    } 
+
+    .desktop-only{
+        display: none;
+    }
+}

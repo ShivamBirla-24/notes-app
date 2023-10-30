@@ -11,19 +11,26 @@ function App() {
   let [groupClick,setgroupClick] = useState("");
   let [isClicked,setisClicked] = useState(false);
   let [groupColor,setgroupColor]= useState("");
-
   return (
-    <div className='App'>
+    <>
+      <div className='App desktop-only'>
         <div className='left-container-app'>
             <Group setisClicked={setisClicked} setpopUp={setpopUp} Count={Count} setCount={setCount} groupClick={groupClick} setgroupClick={setgroupClick} allGroups={allGroups} setallGroups={setallGroups} setgroupColor={setgroupColor}/>
         </div>
         <div className='right-container-app'>
             {
-              (isClicked) ? <Notes groupClick={groupClick} groupColor={groupColor}/> : <DefaultBackground/>
+              (isClicked) ? <Notes groupClick={groupClick} groupColor={groupColor} setisClicked={setisClicked} setgroupClick={setgroupClick}/> : <DefaultBackground/>
             }
         </div>        
         {popUp && <Popup setpopUp={setpopUp} Count={Count} setCount={setCount} setgroupClick={setgroupClick}/>}
-    </div>
+      </div>
+
+      <div className='mobile-only'>
+          {(!isClicked) && <Group setisClicked={setisClicked} setpopUp={setpopUp} Count={Count} setCount={setCount} groupClick={groupClick} setgroupClick={setgroupClick} allGroups={allGroups} setallGroups={setallGroups} setgroupColor={setgroupColor}/>}
+          {popUp && <Popup setpopUp={setpopUp} Count={Count} setCount={setCount} setgroupClick={setgroupClick}/>}
+          {(isClicked) && <Notes groupClick={groupClick} groupColor={groupColor} setisClicked={setisClicked} setgroupClick={setgroupClick}/>}
+      </div>
+    </>
   );
 }
 
