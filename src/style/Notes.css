@@ -163,13 +163,13 @@
         width: 30%;
         justify-content: flex-start;
         align-items: flex-start ;
-        font-size: 13.5px;
+        font-size: 14px;
         font-weight: 500;
         gap: 4px;
      }
      
      .textmsg-content{
-        font-size: 13.5px;
+        font-size: 14px;
         width: 60%;
         display: flex;
         justify-content: flex-start;
@@ -218,13 +218,13 @@
         width: 30%;
         justify-content: flex-start;
         align-items: flex-start ;
-        font-size: 12.5px;
+        font-size: 13px;
         font-weight: 500;
         gap: 3px;
      }
      
      .textmsg-content{
-        font-size: 12.5px;
+        font-size: 13px;
         width: 65%;
         display: flex;
         justify-content: flex-start;
