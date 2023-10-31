@@ -49,18 +49,22 @@ function Notes({groupClick,groupColor,setisClicked,setgroupClick,uniqueKey,setUn
       }
   }
 
-  const pressEnter = (e)=>{
-    if(e.key==='Enter'){
-        if(text.length){
-            setData({
-                "time": currentTime(),
-                "date": DateNow(),
-                "note": text
-              })
-            setText('');
-          }
+  const pressEnter = (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault(); 
+  
+      if (text.length) {
+        setData({
+          "time": currentTime(),
+          "date": DateNow(),
+          "note": text
+        });
+        setText('');
+      }
+    } else if (e.key === 'Enter' && e.shiftKey) {
+      setText((prevText) => prevText + '\n');
     }
-  }
+  };
 
   const backtoHome = ()=>{
       setisClicked(false);
