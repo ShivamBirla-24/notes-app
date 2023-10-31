@@ -75,7 +75,7 @@ function Notes({groupClick,groupColor,setisClicked,setgroupClick,uniqueKey,setUn
           localStorage.setItem(uniqueKey,JSON.stringify(myArray));
           }
         }
-    ,[data,uniqueKey])  
+    ,[data])  
 
 
   useEffect(()=>{
