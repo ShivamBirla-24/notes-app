@@ -1,14 +1,14 @@
-import React, { useState,useEffect } from 'react'
+import React, {useEffect } from 'react'
 import GroupTag from './GroupTag';
 import './../style/Group.css'
 function Group({setpopUp,Count,setgroupClick,allGroups,setallGroups,setisClicked,setgroupColor,uniqueKey,setUniqueKey}) {    
-  const setData = ()=>{
+  const setGroup = ()=>{
        setallGroups(JSON.parse(localStorage.getItem('allGroups')));
   }
 
   useEffect(() => {
-      setData();
-  }, [Count]); 
+      setGroup();
+  },[Count]); 
                          
   const handlePopup = ()=>{
       setpopUp(true);

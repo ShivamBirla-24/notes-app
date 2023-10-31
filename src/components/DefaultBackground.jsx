@@ -7,7 +7,7 @@ const DefaultBackground = ()=>{
     return(
       <div className='defaultbackground'>
           <div className='defaultbackground-upper-div'>
-              <img src={backgroundImage} alt='background image' style={{
+              <img src={backgroundImage} alt='background' style={{
                height:"250px",
                width:"520px"
                 }}></img>
@@ -19,7 +19,7 @@ const DefaultBackground = ()=>{
               </div>
           </div>
           <div className='encryption'>
-              <img src={lockImage} alt='lock image' style={{
+              <img src={lockImage} alt='lock' style={{
                 height:"15px",
                 width:"11px"
               }}></img>
