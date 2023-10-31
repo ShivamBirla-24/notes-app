@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from 'react'
 import GroupTag from './GroupTag';
 import './../style/Group.css'
-function Group({setpopUp,Count,groupClick,setgroupClick,allGroups,setallGroups,setisClicked,setgroupColor}) {    
+function Group({setpopUp,Count,setgroupClick,allGroups,setallGroups,setisClicked,setgroupColor,uniqueKey,setUniqueKey}) {    
   const setData = ()=>{
        setallGroups(JSON.parse(localStorage.getItem('allGroups')));
   }
@@ -13,19 +13,20 @@ function Group({setpopUp,Count,groupClick,setgroupClick,allGroups,setallGroups,s
   const handlePopup = ()=>{
       setpopUp(true);
   }
-  
   const handlegroupClick = (e)=>{
-       setgroupClick(e.target.id);
-       setisClicked(true);
-       setgroupColor(e.target.getAttribute("color"));
+    setgroupClick(e.target.id);
+    setisClicked(true);
+    setgroupColor(e.target.getAttribute("color"));
+    setUniqueKey(
+        e.target.id + (e.target.getAttribute("number"))
+    )
   }
-  
+
   const backtoHome = ()=>{
      setisClicked(false);
      setgroupClick("");
+     setUniqueKey("");
   }
-
- 
 
   return (
     <div className='group-container'>
@@ -39,7 +40,7 @@ function Group({setpopUp,Count,groupClick,setgroupClick,allGroups,setallGroups,s
              {
                 (allGroups && allGroups.length > 0 ) ? (
                     allGroups.map((item,index)=>(
-                        <GroupTag key={index} name={item.groupname} color={item.color} handlegroupClick={handlegroupClick} groupClick={groupClick}/>
+                        <GroupTag key={index} number={index} name={item.groupname} color={item.color} handlegroupClick={handlegroupClick} uniqueKey={uniqueKey}/>
                     ))
                 ) : ""
              }

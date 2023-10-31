@@ -1,9 +1,9 @@
 import React from 'react'
 import './../style/GroupTag.css'
 
-const GroupTag = ({name,color,handlegroupClick,groupClick})=>{
+const GroupTag = ({number,name,color,handlegroupClick,uniqueKey})=>{
     return (
-        <div id={name} color={color} onClick={handlegroupClick} className= {`${(groupClick===name) ? "onclick-group":""} group-tag-main-div`}>
+        <div id={name} number={number} color={color} onClick={handlegroupClick} className= {`${((uniqueKey)===(name+number)) ? "onclick-group":""} group-tag-main-div`}>
             <div id={name}
                 color={color}
                 style={{
@@ -13,7 +13,7 @@ const GroupTag = ({name,color,handlegroupClick,groupClick})=>{
                  name[0] + name[name.length-1]
                }
             </div>
-            <div id={name} color={color} className='group-tag-name'>
+            <div id={name} number= {number} color={color} className='group-tag-name'>
                {name}
             </div>
         </div>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import submitImage from './../images/enter.png'
 import backbuttonImage from './../images/backbutton.svg'
 import './../style/Notes.css'
-function Notes({groupClick,groupColor,setisClicked,setgroupClick}) {
+function Notes({groupClick,groupColor,setisClicked,setgroupClick,uniqueKey,setUniqueKey}) {
   let [text,setText]= useState("");
   let [data,setData]=useState("");
   let [groupMsg , setgroupMsg] = useState([]);
@@ -39,7 +39,7 @@ function Notes({groupClick,groupColor,setisClicked,setgroupClick}) {
     }
 
   const handleClick = ()=>{
-      if(text.length && text !== "\n" && text !== "\n\n"){
+      if(text.length){
         setData({
             "time": currentTime(),
             "date": DateNow(),
@@ -65,24 +65,25 @@ function Notes({groupClick,groupColor,setisClicked,setgroupClick}) {
   const backtoHome = ()=>{
       setisClicked(false);
       setgroupClick("");
+      setUniqueKey("");
   }
 
   useEffect(()=>{
           if(data.length !==0){
-          let myArray = JSON.parse(localStorage.getItem(groupClick)) || [] ;
+          let myArray = JSON.parse(localStorage.getItem(uniqueKey)) || [] ;
           myArray.push(data);
-          localStorage.setItem(groupClick,JSON.stringify(myArray));
+          localStorage.setItem(uniqueKey,JSON.stringify(myArray));
           }
         }
     ,[data])  
 
 
   useEffect(()=>{
-    let groupData = localStorage.getItem(groupClick) ? JSON.parse(localStorage.getItem(groupClick)) : [];
+    let groupData = localStorage.getItem(uniqueKey) ? JSON.parse(localStorage.getItem(uniqueKey)) : [];
     setgroupMsg(
         groupData
     )
-  },[groupClick,data])
+  },[uniqueKey,data])
 
  
   return (
