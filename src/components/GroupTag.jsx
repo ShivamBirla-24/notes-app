@@ -10,7 +10,7 @@ const GroupTag = ({number,name,color,handlegroupClick,uniqueKey})=>{
                     backgroundColor:`${color}`
             }} className='group-tag-circle'>
                {
-                 name[0] + name[name.length-1]
+                 (name.split(" ").join(""))[0] + (name.split(" ").join(""))[(name.split(" ").join("")).length-1]
                }
             </div>
             <div id={name} number= {number} color={color} className='group-tag-name'>

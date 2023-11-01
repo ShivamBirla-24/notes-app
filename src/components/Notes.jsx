@@ -122,7 +122,7 @@ const GroupTag = ({name,color})=>{
                   backgroundColor:`${color}`
           }} className='notes-group-tag-circle'>
              {
-               name[0] + name[name.length-1]
+               (name.split(" ").join(""))[0] + (name.split(" ").join(""))[(name.split(" ").join("")).length-1]
              }
           </div>
           <div id={name} color={color} className='notes-group-tag-name'>
